@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from generator import views
+
+
 urlpatterns = [
     path('', views.home, name="home"),
     #path('admin/', admin.site.urls),
     path('password/', views.password, name='password'),
-    path('about/', views.about, name='about')
+    path('about/', views.about, name='about'),
+    path('time/', views.set_timezone),
 ]

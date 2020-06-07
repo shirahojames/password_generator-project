@@ -1,7 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import random
+
 # Create your views here.
+
+def set_timezone(request):
+    if request.method == 'POST':
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')
+    else:
+        return render(request, 'generator/time.html', {'timezones': pytz.common_timezones})
+
 def home(request):
     return render(request, 'generator/home.html')
 
